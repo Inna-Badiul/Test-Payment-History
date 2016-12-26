@@ -4,25 +4,25 @@
     <meta charset="UTF-8">
     <title>Payment-history</title>
     <link href="styles.css" rel="stylesheet">
-    <script src="all.js"></script>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 </head>
 <body>
 <div class="page-wrapper"></div>
 <script type="text/template" id="listTemplate">
     <ul>
-        <% for(var i=0; i<paymentItems.items.length; i++) {%>
+        <% for(var i=0; i<paymentItems.length; i++) {%>
             <li class='list-item'>
-                <div class="description"><%=paymentItems.items[i].description%></div>
-                <span class="time"><%=paymentItems.items[i].time%></span>
-                <% if (paymentItems.items[i].isImported !== false) { %>
-                <span class="imported">Importiert</span>
+                <div class="description"><%=paymentItems[i].description%></div>
+                <span class="time"><%=paymentItems[i].formatedTime%></span>
+                <% if (paymentItems[i].isImported !== false) { %>
+                    <span class="imported">Importiert</span>
                 <% } %>
+                <span class="value"><%=paymentItems[i].value%></span>
             </li>
         <% } %>
     </ul>
 </script>
-
+<script src="all.js"></script>
 </body>
 </html>

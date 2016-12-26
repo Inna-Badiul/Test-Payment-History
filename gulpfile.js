@@ -2,9 +2,13 @@ var gulp = require('gulp'),
     concat = require('gulp-concat'),
     sass = require('gulp-sass'),
     uglify = require('gulp-uglify'),
+    sourcemaps = require('gulp-sourcemaps'),
+    
     jsSources = [
         'node_modules/jquery/dist/jquery.min.js',
+        'node_modules/director/build/director.min.js',
         'node_modules/lodash/lodash.min.js',
+        'js/app.js',
         'js/*.js'
     ];
 gulp.task('sass', function () {
@@ -13,7 +17,15 @@ gulp.task('sass', function () {
         .pipe(gulp.dest('dist'));
 });
 
-gulp.task('scripts', function () {
+gulp.task('scripts:dev', function () {
+    return gulp.src(jsSources)
+        .pipe(sourcemaps.init())
+        .pipe(concat('all.js'))
+        .pipe(sourcemaps.write())
+        .pipe(gulp.dest('dist'));
+});
+
+gulp.task('scripts:prod', function () {
     return gulp.src(jsSources)
         .pipe(concat('all.js'))
         .pipe(uglify())
@@ -27,9 +39,9 @@ gulp.task('copy', function(){
 
 gulp.task('watch', function () {
     gulp.watch('css/*.scss', ['sass'])
-    gulp.watch('js/*.js', ['scripts'])
+    gulp.watch('js/*.js', ['scripts:dev'])
     gulp.watch('index.html', ['copy']);
 });
 
 
-gulp.task('default', ['sass', 'scripts' ,'watch', 'copy']);
+gulp.task('default', ['sass', 'scripts:dev' ,'watch', 'copy']);
