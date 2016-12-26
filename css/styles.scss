@@ -1,0 +1,19 @@
+ul{
+  list-style: none;
+  li {
+    border: 1px solid lightgrey;
+    height: 50px;
+    width: 500px;
+    font-family: sans-serif;
+  }
+}
+
+
+.imported {
+  font-size: 12px;
+  width: 60px;
+  border-radius: 3px;
+  background-color: #aeaeae;
+  color: white;
+  text-transform: uppercase;
+}
