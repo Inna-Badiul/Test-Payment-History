@@ -9,18 +9,32 @@
 </head>
 <body>
 <div class="page-wrapper"></div>
+<script type="text/template" id="createPaymentTemplate">
+    <h1>Create Payment</h1>
+    <form>
+        <input id="tenant" type="text" name="tenant" placeholder="Mieter:"><br>
+        <input id="summe" type="number" name="summe" placeholder="Summe:"><br>
+        <input type="checkbox" id="importiert">
+        <label for="importiert">Importiert</label><br>
+        <button class="submit-button" type="submit" name="action">Einreichen
+        </button>
+    </form>
+</script>
 <script type="text/template" id="listTemplate">
     <ul>
-        <% for(var i=0; i<paymentItems.length; i++) {%>
+        <% for(var i=0; i
+        <paymentItems.length
+                ; i++) {%>
             <li class='list-item'>
                 <div class="description"><%=paymentItems[i].description%></div>
                 <span class="time"><%=paymentItems[i].formatedTime%></span>
                 <% if (paymentItems[i].isImported !== false) { %>
-                    <span class="imported">Importiert</span>
+                <span class="imported">Importiert</span>
                 <% } %>
-                <span class="value"><%=paymentItems[i].value%></span>
+                <span class="value"><%=paymentItems[i].value%>&#8364;</span><br>
+                <button type="button" class="delete-payment">Delete</button>
             </li>
-        <% } %>
+            <% } %>
     </ul>
 </script>
 <script src="all.js"></script>

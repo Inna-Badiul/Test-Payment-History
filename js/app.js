@@ -1,12 +1,12 @@
 var App = {};
 
-$(function(){
+$(function () {
     var routes = {
         '/': function () {
             App.paymentHistoryController.init();
         },
-        '/add': function(){
-            App.createPayment.init();
+        '/add': function () {
+            App.createPaymentController.init();
         }
     };
     Router(routes).init('/');
