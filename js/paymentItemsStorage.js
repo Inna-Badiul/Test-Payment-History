@@ -43,7 +43,7 @@ App.paymentItemsStorage = {
             }
         ];
         return rawDataFromStorage.map(function (item) {
-            var timeAsObject = new Date(item.time)
+            var timeAsObject = new Date(item.time);
             item.formatedTime = timeAsObject.getDay() + "." + timeAsObject.getMonth() + "." + timeAsObject.getYear();
             return item;
         });

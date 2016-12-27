@@ -32,7 +32,7 @@
                 <span class="imported">Importiert</span>
                 <% } %>
                 <span class="value"><%=paymentItems[i].value%>&#8364;</span><br>
-                <button type="button" class="delete-payment">Delete</button>
+                <button type="button" class="delete-payment" data-uid=<%= paymentItems[i].id%>>Delete</button>
             </li>
             <% } %>
     </ul>
