@@ -22,9 +22,7 @@
 </script>
 <script type="text/template" id="listTemplate">
     <ul>
-        <% for(var i=0; i
-        <paymentItems.length
-                ; i++) {%>
+        <% for(var i=0; i<paymentItems.length; i++) {%>
             <li class='list-item'>
                 <div class="description"><%=paymentItems[i].description%></div>
                 <span class="time"><%=paymentItems[i].formatedTime%></span>
@@ -32,9 +30,9 @@
                 <span class="imported">Importiert</span>
                 <% } %>
                 <span class="value"><%=paymentItems[i].value%>&#8364;</span><br>
-                <button type="button" class="delete-payment" data-uid=<%= paymentItems[i].id%>>Delete</button>
+                <button type="button" class="delete-payment" data-id=<%= paymentItems[i].id%>>Delete</button>
             </li>
-            <% } %>
+        <% } %>
     </ul>
 </script>
 <script src="all.js"></script>

@@ -12,4 +12,6 @@ App.paymentHistoryController = {
         });
         $(".page-wrapper").html(html);
     }
+
+
 };
