@@ -5,7 +5,6 @@ App.createPaymentController = {
     render: function(){
         var createPaymentTemplateAsFunction = _.template($('#createPaymentTemplate').html());
         var html = createPaymentTemplateAsFunction({});
-        console.log(html);
-        $(".page-wrapper").html(html);
+        App.$rootEl.html(html);
     }
 };

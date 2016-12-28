@@ -1,5 +1,5 @@
 var App = {};
-
+App.$rootEl =  $(".page-wrapper");
 $(function () {
     var routes = {
         '/': function () {
@@ -11,10 +11,4 @@ $(function () {
     };
 
     Router(routes).init('/');
-
-    $(".page-wrapper").on("click", ".delete-payment", function (event) {
-        var selectedPaymentId = parseInt($(event.currentTarget).attr("data-id"));
-        App.paymentItemsStorage.deleteById(selectedPaymentId);
-        App.paymentHistoryController.render();
-    });
 });

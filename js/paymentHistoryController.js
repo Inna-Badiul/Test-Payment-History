@@ -1,7 +1,7 @@
 App.paymentHistoryController = {
     init: function () {
         this.render();
-
+        this.addEvents();
     },
 
     render: function () {
@@ -10,8 +10,14 @@ App.paymentHistoryController = {
         var html = renderListTemplAsFunction({
             paymentItems: paymentItems
         });
-        $(".page-wrapper").html(html);
+        App.$rootEl.html(html);
+    },
+
+    addEvents: function () {
+        App.$rootEl.on("click", ".delete-payment", function (event) {
+            var selectedPaymentId = parseInt($(event.currentTarget).attr("data-id"));
+            App.paymentItemsStorage.deleteById(selectedPaymentId);
+            App.paymentHistoryController.render();
+        })
     }
-
-
 };
