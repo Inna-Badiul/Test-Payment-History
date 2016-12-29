@@ -6,7 +6,7 @@ App.paymentHistoryController = {
 
     render: function () {
         var paymentItems = App.paymentItemsStorage.getAll();
-        var renderListTemplAsFunction = _.template($('#listTemplate').html());
+        var renderListTemplAsFunction = _.template($("#listTemplate").html());
         var html = renderListTemplAsFunction({
             paymentItems: paymentItems
         });
@@ -18,6 +18,6 @@ App.paymentHistoryController = {
             var selectedPaymentId = parseInt($(event.currentTarget).attr("data-id"));
             App.paymentItemsStorage.deleteById(selectedPaymentId);
             App.paymentHistoryController.render();
-        })
+        });
     }
 };

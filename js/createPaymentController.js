@@ -3,7 +3,7 @@ App.createPaymentController = {
         this.render();
     },
     render: function(){
-        var createPaymentTemplateAsFunction = _.template($('#createPaymentTemplate').html());
+        var createPaymentTemplateAsFunction = _.template($("#createPaymentTemplate").html());
         var html = createPaymentTemplateAsFunction({});
         App.$rootEl.html(html);
     }

@@ -62,8 +62,9 @@ App.paymentItemsStorage = {
         if (this.localStorageAvailable) {
             if (typeof item === 'object') {
                 item = JSON.stringify(item);
-                return window.localStorage.setItem(key, item);
             }
+
+           window.localStorage.setItem(key, item);
         }
     },
     getItem: function (key) {
@@ -75,7 +76,7 @@ App.paymentItemsStorage = {
     },
     localStorageAvailable: (function () {
         try {
-            var supported = (localStorage in window && window.localStorage !== null);
+            var supported = ('localStorage' in window && window.localStorage !== null);
 
             // When Safari (OS X or iOS) is in private browsing mode, it appears as though localStorage
             // is available, but trying to call .setItem throws an exception.
