@@ -62,20 +62,20 @@ App.paymentItemsStorage = {
         if (this.localStorageAvailable) {
             if (typeof item === 'object') {
                 item = JSON.stringify(item);
-                return window[localStorage].setItem(key, item);
+                return window.localStorage.setItem(key, item);
             }
         }
     },
     getItem: function (key) {
         if (this.localStorageAvailable) {
-            return window[localStorage].getItem(key);
+            return window.localStorage.getItem(key);
         } else {
             return undefined;
         }
     },
     localStorageAvailable: (function () {
         try {
-            var supported = (localStorage in window && window[localStorage] !== null);
+            var supported = (localStorage in window && window.localStorage !== null);
 
             // When Safari (OS X or iOS) is in private browsing mode, it appears as though localStorage
             // is available, but trying to call .setItem throws an exception.
@@ -84,7 +84,7 @@ App.paymentItemsStorage = {
             // that exceeded the quota."
             var key = 'ls_some_test_key';
             if (supported) {
-                var webStorage = window[localStorage];
+                var webStorage = window.localStorage;
                 webStorage.setItem(key, '');
                 webStorage.removeItem(key);
             }
