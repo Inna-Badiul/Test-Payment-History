@@ -1,4 +1,5 @@
 App.paymentItemsStorage = {
+    paymentItemsLsKey: "paymentItems",
     rawDataFromStorage: [
         {
             "id": 1366,
@@ -43,30 +44,33 @@ App.paymentItemsStorage = {
     ],
 
     getAll: function () {
-        return this.rawDataFromStorage.map(function (item) {
+        return JSON.parse(localStorage.getItem("paymentItems")).map(function (item) {
             var timeAsObject = new Date(item.time);
             item.formatedTime = timeAsObject.getDay() + "." + timeAsObject.getMonth() + "." + timeAsObject.getYear();
             return item;
         });
     },
+
     addNew: function (paymentItem) {
     },
 
     deleteById: function (id) {
-        this.rawDataFromStorage = _.remove(this.rawDataFromStorage, function (n) {
+        var itemsFromStor = JSON.parse(localStorage.getItem("paymentItems"));
+        itemsFromStor = _.remove(itemsFromStor, function (n) {
             return n.id !== id;
         });
-
+        this.setItem(this.paymentItemsLsKey, itemsFromStor);
     },
+
     setItem: function (key, item) {
         if (this.localStorageAvailable) {
             if (typeof item === 'object') {
                 item = JSON.stringify(item);
             }
-
-           window.localStorage.setItem(key, item);
+            window.localStorage.setItem(key, item);
         }
     },
+
     getItem: function (key) {
         if (this.localStorageAvailable) {
             return window.localStorage.getItem(key);
@@ -74,6 +78,7 @@ App.paymentItemsStorage = {
             return undefined;
         }
     },
+    
     localStorageAvailable: (function () {
         try {
             var supported = ('localStorage' in window && window.localStorage !== null);
@@ -95,4 +100,9 @@ App.paymentItemsStorage = {
         }
     }())
 };
+
+App.paymentItemsStorage.setItem(App.paymentItemsStorage.paymentItemsLsKey, App.paymentItemsStorage.rawDataFromStorage);
+
+
+
 
