@@ -1,4 +1,5 @@
-App.paymentHistoryController = {
+App.paymentHistoryController = Object.assign({
+    templateId: "listTemplate",
     init: function () {
         this.render();
         this.addEvents();
@@ -6,11 +7,7 @@ App.paymentHistoryController = {
 
     render: function () {
         var paymentItems = App.paymentItemsStorage.getAll();
-        var renderListTemplAsFunction = _.template($("#listTemplate").html());
-        var html = renderListTemplAsFunction({
-            paymentItems: paymentItems
-        });
-        App.$rootEl.html(html);
+        this.renderTemplate({paymentItems: paymentItems});
     },
 
     addEvents: function () {
@@ -24,4 +21,4 @@ App.paymentHistoryController = {
                 App.Router.setRoute('/add');
             })
     }
-};
+}, App.baseController);

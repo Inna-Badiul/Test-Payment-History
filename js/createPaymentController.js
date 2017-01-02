@@ -1,12 +1,11 @@
-App.createPaymentController = {
+App.createPaymentController = Object.assign({
+    templateId: "createPaymentTemplate",
     init: function () {
         this.render();
         this.addEvents();
     },
     render: function () {
-        var createPaymentTemplateAsFunction = _.template($("#createPaymentTemplate").html());
-        var html = createPaymentTemplateAsFunction({});
-        App.$rootEl.html(html);
+        this.renderTemplate();
     },
     create: function (e) {
         App.paymentItemsStorage.addNew();
@@ -15,4 +14,4 @@ App.createPaymentController = {
     addEvents: function () {
         App.$rootEl.on("click", ".submit-button", this.create.bind(this));
     }
-};
+}, App.baseController);
