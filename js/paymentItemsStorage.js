@@ -67,12 +67,12 @@ App.paymentItemsStorage = {
             item = JSON.stringify(item);
         }
         window.localStorage.setItem(key, item);
-},
+    },
 
     getItem: function (key) {
         return window.localStorage.getItem(key);
     },
-    
+
     localStorageAvailable: (function () {
         try {
             var supported = ('localStorage' in window && window.localStorage !== null);
@@ -95,8 +95,9 @@ App.paymentItemsStorage = {
     }())
 };
 
-App.paymentItemsStorage.setItem(App.paymentItemsStorage.paymentItemsLsKey, App.paymentItemsStorage.rawDataFromStorage);
-
-
-
-
+//just for testing
+try {
+    App.paymentItemsStorage.setItem(App.paymentItemsStorage.paymentItemsLsKey, App.paymentItemsStorage.rawDataFromStorage);
+} catch (e) {
+    
+}
