@@ -17,7 +17,7 @@ $(function () {
     if (App.paymentItemsStorage.localStorageAvailable) {
         router.init('/');
     } else {
+        router.setRoute('/error');
         router.init();
-        router.setRoute('/error')
     }
 });
