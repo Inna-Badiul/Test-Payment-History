@@ -1,5 +1,5 @@
 var App = {};
-App.$rootEl =  $(".page-wrapper");
+App.$rootEl = $(".page-wrapper");
 $(function () {
     var routes = {
         '/': function () {
@@ -7,8 +7,17 @@ $(function () {
         },
         '/add': function () {
             App.createPaymentController.init();
+        },
+        '/error': function () {
+            App.errorPageController.init();
         }
     };
 
-    Router(routes).init('/');
+    var router = Router(routes);
+    if (App.paymentItemsStorage.localStorageAvailable) {
+        router.init('/');
+    } else {
+        router.init();
+        router.setRoute('/error')
+    }
 });

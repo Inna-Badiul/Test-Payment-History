@@ -63,20 +63,14 @@ App.paymentItemsStorage = {
     },
 
     setItem: function (key, item) {
-        if (this.localStorageAvailable) {
-            if (typeof item === 'object') {
-                item = JSON.stringify(item);
-            }
-            window.localStorage.setItem(key, item);
+        if (typeof item === 'object') {
+            item = JSON.stringify(item);
         }
-    },
+        window.localStorage.setItem(key, item);
+},
 
     getItem: function (key) {
-        if (this.localStorageAvailable) {
-            return window.localStorage.getItem(key);
-        } else {
-            return undefined;
-        }
+        return window.localStorage.getItem(key);
     },
     
     localStorageAvailable: (function () {
