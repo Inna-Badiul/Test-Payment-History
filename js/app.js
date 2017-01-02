@@ -13,11 +13,11 @@ $(function () {
         }
     };
 
-    var router = Router(routes);
+    App.Router = Router(routes);
     if (App.paymentItemsStorage.localStorageAvailable) {
-        router.init('/');
+        App.Router.init('/');
     } else {
-        router.setRoute('/error');
-        router.init();
+        App.Router.setRoute('/error');
+        App.Router.init();
     }
 });
