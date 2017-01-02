@@ -14,6 +14,9 @@ $(function () {
     };
 
     App.Router = Router(routes);
+    App.Router.configure({before: function(){
+        App.$rootEl.off();
+    }});
     if (App.paymentItemsStorage.localStorageAvailable) {
         App.Router.init('/');
     } else {

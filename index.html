@@ -21,20 +21,30 @@
     </form>
 </script>
 <script type="text/template" id="listTemplate">
-    <ul>
-        <% for(var i=0; i<paymentItems.length; i++) {%>
-            <li class='list-item'>
-                <div class="description"><%=paymentItems[i].description%></div>
-                <span class="time"><%=paymentItems[i].formatedTime%></span>
-                <% if (paymentItems[i].isImported !== false) { %>
-                <span class="imported">Importiert</span>
+    <div class="payment-history">
+        <% if(paymentItems.length === 0) {%>
+            <h2>No items</h2>
+        <% } else { %>
+        <ul>
+            <% for(var i=0; i <paymentItems.length; i++) {%>
+                <li class='list-item'>
+                    <div class="description"><%=paymentItems[i].description%></div>
+                    <span class="time"><%=paymentItems[i].time%></span>
+                    <% if (paymentItems[i].isImported !== false) { %>
+                    <span class="imported">Importiert</span>
+                    <% } %>
+                    <% if(paymentItems[i].value<0) { %>
+                    <span class="value red"><%=paymentItems[i].value%>&#8364;</span><br>
+                    <% } else { %>
+                    <span class="value">+<%=paymentItems[i].value%>&#8364;</span><br>
+                    <% } %>
+                    <button type="button" class="delete-payment" data-id=<%= paymentItems[i].id%>>Delete</button>
+                </li>
                 <% } %>
-                <span class="value"><%=paymentItems[i].value%>&#8364;</span><br>
-                <button type="button" class="delete-payment" data-id=<%= paymentItems[i].id%>>Delete</button>
-            </li>
+        </ul>
         <% } %>
-    </ul>
-    <button type="button" class="create-payment">Create Payment</button>
+        <button type="button" class="create-payment">Create Payment</button>
+    </div>
 </script>
 <script type="text/template" id="errorPageTemplate">
     <p>Please leave private browsing mode</p>

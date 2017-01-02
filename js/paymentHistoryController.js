@@ -20,7 +20,7 @@ App.paymentHistoryController = {
                 App.paymentItemsStorage.deleteById(selectedPaymentId);
                 App.paymentHistoryController.render();
             })
-            .on("click", ".create-payment", function (event){
+            .on("click", ".create-payment", function (event) {
                 App.Router.setRoute('/add');
             })
     }

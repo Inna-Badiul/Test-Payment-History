@@ -32,16 +32,12 @@ gulp.task('scripts:prod', function () {
         .pipe(gulp.dest('dist'));
 });
 
-gulp.task('copy', function(){
-    return gulp.src('index.html')
-        .pipe(gulp.dest('dist'));
-});
+
 
 gulp.task('watch', function () {
     gulp.watch('css/*.scss', ['sass'])
     gulp.watch('js/*.js', ['scripts:dev'])
-    gulp.watch('index.html', ['copy']);
 });
 
 
-gulp.task('default', ['sass', 'scripts:dev' ,'watch', 'copy']);
+gulp.task('default', ['sass', 'scripts:dev' ,'watch']);
