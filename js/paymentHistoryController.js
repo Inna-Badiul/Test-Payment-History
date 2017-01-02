@@ -7,7 +7,9 @@ App.paymentHistoryController = Object.assign({
 
     render: function () {
         var paymentItems = App.paymentItemsStorage.getAll();
-        this.renderTemplate({paymentItems: paymentItems});
+        this.renderTemplate({
+            paymentItems: paymentItems
+        });
     },
 
     addEvents: function () {

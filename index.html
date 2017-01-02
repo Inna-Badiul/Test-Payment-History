@@ -29,7 +29,7 @@
             <% for(var i=0; i <paymentItems.length; i++) {%>
                 <li class='list-item'>
                     <div class="description"><%=paymentItems[i].description%></div>
-                    <span class="time"><%=paymentItems[i].time%></span>
+                    <span class="time"><%=formatTime(paymentItems[i].time)%></span>
                     <% if (paymentItems[i].isImported !== false) { %>
                     <span class="imported">Importiert</span>
                     <% } %>
