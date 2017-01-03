@@ -460,3 +460,11 @@ form {
   background-color: #aeaeae;
   color: white;
   text-transform: uppercase; }
+
+.invalid {
+  border-color: red; }
+
+.hint-description {
+  display: none;
+  color: red;
+  margin-bottom: 15px; }

@@ -8,15 +8,25 @@ App.createPaymentController = Object.assign({
         this.renderTemplate({});
     },
     create: function (e) {
-        console.log(e)
         e.preventDefault();
         var description = $('input[name="description"]').val();
         var summ = $('input[name="summ"]').val();
-        App.paymentItemsStorage.addNew(description, summ);
-        App.Router.setRoute('/');
-
+        this.validateForm(description,summ);
+        if(this.validateForm(description,summ)===true){
+            App.paymentItemsStorage.addNew(description, summ);
+            App.Router.setRoute('/');
+        }
     },
     addEvents: function () {
-        this.addEvent("click",".submit-button", this.create);
+        this.addEvent("submit", "form", this.create);
+    },
+    validateForm: function(description,summ){
+        if(description.length<5){
+            $('input[name="description"]').addClass("invalid");
+            $(".hint-description").css("display", "block");
+            return false;
+        }else{
+            return true;
+        }
     }
 }, App.baseController);

@@ -66,6 +66,7 @@ App.paymentItemsStorage = {
     },
 
     deleteById: function (id) {
+        //ignored isDeleted field and deleting items from array since it is better during usage local storage
         var itemsFromStor = JSON.parse(localStorage.getItem("paymentItems"));
         itemsFromStor = _.remove(itemsFromStor, function (n) {
             return n.id !== id;

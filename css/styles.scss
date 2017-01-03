@@ -5,20 +5,23 @@ body {
   font-size: 14px;
   font-family: 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif;
 }
+
 button {
   margin-top: 10px;
   padding: 7px;
   color: white;
   border-style: none;
 }
-.submit-button{
+
+.submit-button {
   background-color: #76d28c;
 }
-.create-payment{
+
+.create-payment {
   background-color: #76d28c;
-  width:80%;
+  width: 80%;
   display: block;
-  margin:0 auto;
+  margin: 0 auto;
   text-transform: uppercase
 }
 
@@ -46,4 +49,14 @@ form {
   background-color: #aeaeae;
   color: white;
   text-transform: uppercase;
+}
+
+.invalid {
+  border-color: red;
+}
+
+.hint-description {
+  display: none;
+  color: red;
+  margin-bottom:15px;
 }
