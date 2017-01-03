@@ -5,13 +5,13 @@ App.createPaymentController = Object.assign({
         this.addEvents();
     },
     render: function () {
-        this.renderTemplate();
+        this.renderTemplate({});
     },
     create: function (e) {
         App.paymentItemsStorage.addNew();
         App.Router.setRoute('/');
     },
     addEvents: function () {
-        App.$rootEl.on("click", ".submit-button", this.create.bind(this));
+        this.addEvent("click",".submit-button", this.create);
     }
 }, App.baseController);

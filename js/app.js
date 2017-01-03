@@ -14,9 +14,12 @@ $(function () {
     };
 
     App.Router = Router(routes);
-    App.Router.configure({before: function(){
-        App.$rootEl.off();
-    }});
+    App.Router.configure({
+        before: function () {
+            //remove previous ui events before change a page
+            App.$rootEl.off();
+        }
+    });
     if (App.paymentItemsStorage.localStorageAvailable) {
         App.Router.init('/');
     } else {

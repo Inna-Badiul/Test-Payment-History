@@ -10,5 +10,8 @@ App.baseController = {
         var modelExtended = Object.assign(model, this.viewHelpers);
         var html = templateAsFunction(modelExtended);
         App.$rootEl.html(html);
+    },
+    addEvent: function (eventName, targetElement, cb) {
+        App.$rootEl.on(eventName + ".controllerNS", targetElement, cb.bind(this));
     }
 };
