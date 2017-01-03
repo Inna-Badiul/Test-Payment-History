@@ -8,8 +8,13 @@ App.createPaymentController = Object.assign({
         this.renderTemplate({});
     },
     create: function (e) {
-        App.paymentItemsStorage.addNew();
+        console.log(e)
+        e.preventDefault();
+        var description = $('input[name="description"]').val();
+        var summ = $('input[name="summ"]').val();
+        App.paymentItemsStorage.addNew(description, summ);
         App.Router.setRoute('/');
+
     },
     addEvents: function () {
         this.addEvent("click",".submit-button", this.create);

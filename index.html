@@ -12,10 +12,8 @@
 <script type="text/template" id="createPaymentTemplate">
     <h1>Create Payment</h1>
     <form>
-        <input id="tenant" type="text" name="tenant" placeholder="Mieter:"><br>
-        <input id="summe" type="number" name="summe" placeholder="Summe:"><br>
-        <input type="checkbox" id="importiert">
-        <label for="importiert">Importiert</label><br>
+        <input type="text" name="description" placeholder="Description:"><br>
+        <input type="number" name="summ" placeholder="Summe:"><br>
         <button class="submit-button" type="submit" name="action">Einreichen
         </button>
     </form>
@@ -30,7 +28,7 @@
                 <li class='list-item'>
                     <div class="description"><%=paymentItems[i].description%></div>
                     <span class="time"><%=formatTime(paymentItems[i].time)%></span>
-                    <% if (paymentItems[i].isImported !== false) { %>
+                    <% if (paymentItems[i].isImported !== false && paymentItems[i].value>0) { %>
                     <span class="imported">Importiert</span>
                     <% } %>
                     <% if(paymentItems[i].value<0) { %>

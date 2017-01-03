@@ -53,10 +53,12 @@ App.paymentItemsStorage = {
          });*/
     },
 
-    addNew: function () {
+    addNew: function (description,summ) {
         var newItem = {
             time: new Date(),
-            id: Date.now()
+            id: Date.now(),
+            description: description,
+            value: summ
         };
         var itemsFromLS = this.getAll();
         itemsFromLS.push(newItem);

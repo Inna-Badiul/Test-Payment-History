@@ -430,8 +430,11 @@ button {
   color: white;
   border-style: none; }
 
+.submit-button {
+  background-color: #76d28c; }
+
 .create-payment {
-  background-color: green;
+  background-color: #76d28c;
   width: 80%;
   display: block;
   margin: 0 auto;
