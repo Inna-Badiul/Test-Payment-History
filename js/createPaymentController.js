@@ -39,6 +39,6 @@ App.createPaymentController = Object.assign({
             $(".hint-summ").css("display", "block");
             isValid = false;
         }
-            return isValid;
+        return isValid;
     }
 }, App.baseController);
