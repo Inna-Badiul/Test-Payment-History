@@ -1,40 +1,27 @@
+@import 'normalize';
+@import 'payment-history';
+
 body {
   font-size: 14px;
   font-family: 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif;
 }
 
-ul {
-  list-style: none;
-  padding: 0;
-  li {
-    border-bottom: 1px solid lightgrey;
-
-    padding: 10px;
-  }
-  .time {
-    color: #aeaeae;
-  }
-  .value {
-    float: right;
-    margin-right: 5px;
-    font-weight: bold;
-    color: green;
-  }
-  .delete-payment {
-    background-color: #f44336;
-  }
-}
 button {
   margin-top: 10px;
   padding: 7px;
   color: white;
   border-style: none;
 }
-.create-payment{
-  background-color: green;
-  width:80%;
+
+.submit-button {
+  background-color: #76d28c;
+}
+
+.create-payment {
+  background-color: #76d28c;
+  width: 80%;
   display: block;
-  margin:0 auto;
+  margin: 0 auto;
   text-transform: uppercase
 }
 
@@ -63,3 +50,14 @@ form {
   color: white;
   text-transform: uppercase;
 }
+
+.invalid {
+  border-color: red;
+}
+
+.hint-description,.hint-summ {
+  display: none;
+  color: red;
+  margin-bottom:15px;
+}
+

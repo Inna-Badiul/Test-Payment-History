@@ -44,17 +44,29 @@ App.paymentItemsStorage = {
     ],
 
     getAll: function () {
-        return JSON.parse(localStorage.getItem("paymentItems")).map(function (item) {
-            var timeAsObject = new Date(item.time);
-            item.formatedTime = timeAsObject.getDay() + "." + timeAsObject.getMonth() + "." + timeAsObject.getYear();
-            return item;
-        });
+        return JSON.parse(localStorage.getItem("paymentItems")) || [];
+        /*.map(function (item) {
+         var timeAsObject = new Date(item.time);
+         //TODO fix it
+         item.formatedTime = timeAsObject.getDay() + "." + timeAsObject.getMonth() + "." + timeAsObject.getFullYear();
+         return item;
+         });*/
     },
 
-    addNew: function (paymentItem) {
+    addNew: function (description,summ) {
+        var newItem = {
+            time: new Date(),
+            id: Date.now(),
+            description: description,
+            value: summ
+        };
+        var itemsFromLS = this.getAll();
+        itemsFromLS.push(newItem);
+        this.setItem(this.paymentItemsLsKey, itemsFromLS);
     },
 
     deleteById: function (id) {
+        //ignored isDeleted field and deleting items from array since it is better during usage local storage
         var itemsFromStor = JSON.parse(localStorage.getItem("paymentItems"));
         itemsFromStor = _.remove(itemsFromStor, function (n) {
             return n.id !== id;
@@ -63,22 +75,16 @@ App.paymentItemsStorage = {
     },
 
     setItem: function (key, item) {
-        if (this.localStorageAvailable) {
-            if (typeof item === 'object') {
-                item = JSON.stringify(item);
-            }
-            window.localStorage.setItem(key, item);
+        if (typeof item === 'object') {
+            item = JSON.stringify(item);
         }
+        window.localStorage.setItem(key, item);
     },
 
     getItem: function (key) {
-        if (this.localStorageAvailable) {
-            return window.localStorage.getItem(key);
-        } else {
-            return undefined;
-        }
+        return window.localStorage.getItem(key);
     },
-    
+
     localStorageAvailable: (function () {
         try {
             var supported = ('localStorage' in window && window.localStorage !== null);
@@ -101,8 +107,9 @@ App.paymentItemsStorage = {
     }())
 };
 
-App.paymentItemsStorage.setItem(App.paymentItemsStorage.paymentItemsLsKey, App.paymentItemsStorage.rawDataFromStorage);
+//just for testing
+try {
+    //App.paymentItemsStorage.setItem(App.paymentItemsStorage.paymentItemsLsKey, App.paymentItemsStorage.rawDataFromStorage);
+} catch (e) {
 
-
-
-
+}
