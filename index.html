@@ -15,6 +15,7 @@
         <input type="text" name="description" placeholder="Description:"><br>
         <div class="hint-description">Description should not be less then 5 characters. Please fill in this field.</div>
         <input type="number" name="summ" placeholder="Summe:"><br>
+        <div class="hint-summ">Description should not be less then 3 characters. Please fill in this field.</div>
         <button class="submit-button" type="submit" name="action">Einreichen
         </button>
     </form>
@@ -22,24 +23,24 @@
 <script type="text/template" id="listTemplate">
     <div class="payment-history">
         <% if(paymentItems.length === 0) {%>
-            <h2>No items</h2>
+        <h2>No items</h2>
         <% } else { %>
         <ul>
-            <% for(var i=0; i <paymentItems.length; i++) {%>
-                <li class='list-item'>
-                    <div class="description"><%=paymentItems[i].description%></div>
-                    <span class="time"><%=formatTime(paymentItems[i].time)%></span>
-                    <% if (paymentItems[i].isImported !== false && paymentItems[i].value>0) { %>
-                    <span class="imported">Importiert</span>
-                    <% } %>
-                    <% if(paymentItems[i].value<0) { %>
-                    <span class="value red"><%=paymentItems[i].value%>&#8364;</span><br>
-                    <% } else { %>
-                    <span class="value">+<%=paymentItems[i].value%>&#8364;</span><br>
-                    <% } %>
-                    <button type="button" class="delete-payment" data-id=<%= paymentItems[i].id%>>Delete</button>
-                </li>
+            <% for(var i=0; i<paymentItems.length; i++) {%>
+            <li class='list-item'>
+                <div class="description"><%=paymentItems[i].description%></div>
+                <span class="time"><%=formatTime(paymentItems[i].time)%></span>
+                <% if (paymentItems[i].isImported !== false && paymentItems[i].value>0) { %>
+                <span class="imported">Importiert</span>
                 <% } %>
+                <% if(paymentItems[i].value<0) { %>
+                <span class="value red"><%=paymentItems[i].value%>&#8364;</span><br>
+                <% } else { %>
+                <span class="value">+<%=paymentItems[i].value%>&#8364;</span><br>
+                <% } %>
+                <button type="button" class="delete-payment" data-id=<%= paymentItems[i].id%>>Delete</button>
+            </li>
+            <% } %>
         </ul>
         <% } %>
         <button type="button" class="create-payment">Create Payment</button>
