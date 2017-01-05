@@ -53,10 +53,17 @@ App.paymentItemsStorage = {
          });*/
     },
 
-    addNew: function (description,summ) {
+    getItemById: function (itemId) {
+        var itemsFromLs = this.getAll();
+        return _.find(itemsFromLs, function (item) {
+            return item.id === itemId
+        });
+    },
+
+    addNew: function (description, summ) {
         var newItem = {
             time: new Date(),
-            id: Date.now(),
+            id: Date.now() + "",
             description: description,
             value: summ
         };
@@ -106,10 +113,3 @@ App.paymentItemsStorage = {
         }
     }())
 };
-
-//just for testing
-try {
-    //App.paymentItemsStorage.setItem(App.paymentItemsStorage.paymentItemsLsKey, App.paymentItemsStorage.rawDataFromStorage);
-} catch (e) {
-
-}

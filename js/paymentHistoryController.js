@@ -14,7 +14,7 @@ App.paymentHistoryController = Object.assign({
 
     addEvents: function () {
         this.addEvent("click", ".delete-payment", function (event) {
-            var selectedPaymentId = parseInt($(event.currentTarget).attr("data-id"));
+            var selectedPaymentId =$(event.currentTarget).attr("data-id");
             App.paymentItemsStorage.deleteById(selectedPaymentId);
             App.paymentHistoryController.render();
         });

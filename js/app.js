@@ -10,6 +10,9 @@ $(function () {
         },
         '/error': function () {
             App.errorPageController.init();
+        },
+        '/edit/:itemId': function (itemId) {
+            App.createPaymentController.init(itemId);
         }
     };
 

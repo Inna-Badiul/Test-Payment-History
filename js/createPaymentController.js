@@ -1,8 +1,20 @@
 App.createPaymentController = Object.assign({
     templateId: "createPaymentTemplate",
-    init: function () {
-        this.render();
-        this.addEvents();
+    init: function (itemId) {
+        isEditMode = false;
+        if (App.paymentItemsStorage.getItemById(itemId) === undefined) {
+            this.render();
+            this.addEvents();
+            isEditMode = false;
+        } else {
+            var item = App.paymentItemsStorage.getItemById(itemId),
+            description = item.description,
+            summ = item.value;
+            this.render();
+            $('input[name="description"]').val(description);
+            $('input[name="summ"]').val(summ);
+            isEditMode = true;
+        }
     },
 
     render: function () {
@@ -47,7 +59,7 @@ App.createPaymentController = Object.assign({
 
     summValidationExp: /^[\+\-]?\d+$/,
     isSummValid: false,
-    
+
     validateSumm: function () {
         var summ = $('input[name="summ"]').val();
         if (this.summValidationExp.test(summ) === false) {
