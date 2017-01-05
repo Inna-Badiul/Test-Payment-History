@@ -20,7 +20,7 @@ $(function () {
     App.Router.configure({
         before: function () {
             //remove previous ui events before change a page
-            App.$rootEl.off();
+            App.$rootEl.off("controllerNS");
         }
     });
     if (App.paymentItemsStorage.localStorageAvailable) {

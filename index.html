@@ -39,6 +39,7 @@
                 <span class="value">+<%=paymentItems[i].value%>&#8364;</span><br>
                 <% } %>
                 <button type="button" class="delete-payment" data-id=<%= paymentItems[i].id%>>Delete</button>
+                <a href='#edit/<%= paymentItems[i].id%>'class="edit-payment" >edit</a>
             </li>
             <% } %>
         </ul>

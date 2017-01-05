@@ -1,43 +1,44 @@
 App.createPaymentController = Object.assign({
     templateId: "createPaymentTemplate",
+    isEditMode: false,
+    editableItem: undefined,
     init: function (itemId) {
         if (App.paymentItemsStorage.getItemById(itemId) === undefined) {
             this.render();
-            this.addEvents();
-            this.isCreateMode = true;
             this.isEditMode = false;
         } else {
-            var item = App.paymentItemsStorage.getItemById(itemId);
+            this.editableItem = App.paymentItemsStorage.getItemById(itemId);
             this.render();
-            $('input[name="description"]').val(item.description);
-            $('input[name="summ"]').val(summ.value);
+            $('input[name="description"]').val(this.editableItem.description);
+            $('input[name="summ"]').val(this.editableItem.value);
             this.isEditMode = true;
-            this.isCreateMode = false;
         }
+        this.addEvents();
     },
-
-    isEditMode: false,
-    isCreateMode: false,
 
     render: function () {
         this.renderTemplate({});
     },
 
-    create: function (e) {
+    submit: function (e) {
         e.preventDefault();
         var description = $('input[name="description"]').val();
         var summ = $('input[name="summ"]').val();
+        this.validateDescription();
+        this.validateSumm();
         if (this.isDescriptionValid && this.isSummValid) {
-            App.paymentItemsStorage.addNew(description, summ);
-            App.Router.setRoute('/');
-        } else {
-            this.validateDescription();
-            this.validateSumm();
+            if (this.isEditMode === false) {
+                App.paymentItemsStorage.addNew(description, summ);
+                App.Router.setRoute('/');
+            } else {
+                App.paymentItemsStorage.editById(this.editableItem.id, description, summ);
+                App.Router.setRoute('/');
+            }
         }
     },
-
+    
     addEvents: function () {
-        this.addEvent("submit", "form", this.create);
+        this.addEvent("submit", "form", this.submit);
         this.addEvent("blur", 'input[name="description"]', this.validateDescription);
         this.addEvent("blur", 'input[name="summ"]', this.validateSumm);
 
