@@ -1,21 +1,23 @@
 App.createPaymentController = Object.assign({
     templateId: "createPaymentTemplate",
     init: function (itemId) {
-        isEditMode = false;
         if (App.paymentItemsStorage.getItemById(itemId) === undefined) {
             this.render();
             this.addEvents();
-            isEditMode = false;
+            this.isCreateMode = true;
+            this.isEditMode = false;
         } else {
-            var item = App.paymentItemsStorage.getItemById(itemId),
-            description = item.description,
-            summ = item.value;
+            var item = App.paymentItemsStorage.getItemById(itemId);
             this.render();
-            $('input[name="description"]').val(description);
-            $('input[name="summ"]').val(summ);
-            isEditMode = true;
+            $('input[name="description"]').val(item.description);
+            $('input[name="summ"]').val(summ.value);
+            this.isEditMode = true;
+            this.isCreateMode = false;
         }
     },
+
+    isEditMode: false,
+    isCreateMode: false,
 
     render: function () {
         this.renderTemplate({});

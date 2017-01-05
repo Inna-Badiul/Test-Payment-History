@@ -45,12 +45,6 @@ App.paymentItemsStorage = {
 
     getAll: function () {
         return JSON.parse(localStorage.getItem("paymentItems")) || [];
-        /*.map(function (item) {
-         var timeAsObject = new Date(item.time);
-         //TODO fix it
-         item.formatedTime = timeAsObject.getDay() + "." + timeAsObject.getMonth() + "." + timeAsObject.getFullYear();
-         return item;
-         });*/
     },
 
     getItemById: function (itemId) {
@@ -69,6 +63,18 @@ App.paymentItemsStorage = {
         };
         var itemsFromLS = this.getAll();
         itemsFromLS.push(newItem);
+        this.setItem(this.paymentItemsLsKey, itemsFromLS);
+    },
+
+    editById: function (itemId, newDescription, newSumm) {
+        var itemsFromLS = this.getAll();
+        for (var i = 0; i < itemsFromLS.length; i++) {
+            if (itemId === itemsFromLS[i].id) {
+                itemsFromLS[i].description = newDescription;
+                itemsFromLS[i].value = newSumm;
+                break;
+            }
+        }
         this.setItem(this.paymentItemsLsKey, itemsFromLS);
     },
 
