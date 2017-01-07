@@ -1,5 +1,5 @@
-App.createPaymentController = Object.assign({
-    templateId: "createPaymentTemplate",
+App.createEditPaymentController = Object.assign({
+    templateId: "createEditPaymentTemplate",
     isEditMode: false,
     editableItem: undefined,
     init: function (itemId) {
@@ -17,7 +17,9 @@ App.createPaymentController = Object.assign({
     },
 
     render: function () {
-        this.renderTemplate({});
+        this.renderTemplate({
+            isEditMode: this.isEditMode
+        });
     },
 
     submit: function (e) {

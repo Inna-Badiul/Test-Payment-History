@@ -6,13 +6,13 @@ $(function () {
             App.paymentHistoryController.init();
         },
         '/add': function () {
-            App.createPaymentController.init();
+            App.createEditPaymentController.init();
         },
         '/error': function () {
             App.errorPageController.init();
         },
         '/edit/:itemId': function (itemId) {
-            App.createPaymentController.init(itemId);
+            App.createEditPaymentController.init(itemId);
         }
     };
 
@@ -20,7 +20,7 @@ $(function () {
     App.Router.configure({
         before: function () {
             //remove previous ui events before change a page
-            App.$rootEl.off("controllerNS");
+            App.$rootEl.off(".controllerNS");
         }
     });
     if (App.paymentItemsStorage.localStorageAvailable) {

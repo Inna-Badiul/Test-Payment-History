@@ -9,42 +9,53 @@
 </head>
 <body>
 <div class="page-wrapper"></div>
-<script type="text/template" id="createPaymentTemplate">
-    <h1>Create Payment</h1>
-    <form novalidate>
-        <input type="text" name="description" placeholder="Description:"><br>
-        <div class="hint-description">Description should not be less then 5 characters. Please fill in this field.</div>
-        <input type="number" name="summ" placeholder="Summe:"><br>
-        <div class="hint-summ">Description should not be less then 3 characters. Please fill in this field.</div>
-        <button class="submit-button" type="submit" name="action">Einreichen
+<script type="text/template" id="createEditPaymentTemplate">
+    <%if (isEditMode) {%>
+        <h1 class="text-center">Edit Payment</h1>
+    <% } else { %>
+        <h1 class="text-center">Add Payment</h1>
+    <% } %>
+    <form novalidate class="form-inline">
+        <div class="form-group">
+            <input type="text" name="description" class="form-control" id="exampleInputName2" placeholder="Description:">
+            <div class="hint-description">Description should not be less then 5 characters. Please fill in this field.</div>
+            <div class="input-group">
+                <div class="input-group-addon">&#8364;</div>
+                <input type="number" name="summ" class="form-control" id="exampleInputAmount" placeholder="Sum:">
+                <div class="input-group-addon">.00</div>
+            </div>
+        </div>
+        <div class="hint-summ">Sum should not be less then 3 characters. Please fill in this field.</div>
+        <button class="submit-button btn btn-success " type="submit" name="action">Submit
         </button>
     </form>
 </script>
 <script type="text/template" id="listTemplate">
     <div class="payment-history">
         <% if(paymentItems.length === 0) {%>
-        <h2>No items</h2>
+        <h2 class="text-center">No items</h2>
         <% } else { %>
         <ul>
             <% for(var i=0; i<paymentItems.length; i++) {%>
             <li class='list-item'>
-                <div class="description"><%=paymentItems[i].description%></div>
+                <h4 class="description"><%=paymentItems[i].description%></h4><br>
                 <span class="time"><%=formatTime(paymentItems[i].time)%></span>
                 <% if (paymentItems[i].isImported !== false && paymentItems[i].value>0) { %>
-                <span class="imported">Importiert</span>
+                <span class="imported btn btn-default btn-xs text-uppercase">Importiert</span>
                 <% } %>
                 <% if(paymentItems[i].value<0) { %>
                 <span class="value red"><%=paymentItems[i].value%>&#8364;</span><br>
                 <% } else { %>
                 <span class="value">+<%=paymentItems[i].value%>&#8364;</span><br>
                 <% } %>
-                <button type="button" class="delete-payment" data-id=<%= paymentItems[i].id%>>Delete</button>
-                <a href='#edit/<%= paymentItems[i].id%>'class="edit-payment" >edit</a>
+                <button type="button" class="delete-payment btn btn-danger" data-id=<%= paymentItems[i].id%>>Delete
+                </button>
+                <a class="edit-payment btn btn-default" href="#edit/<%= paymentItems[i].id%>">Edit</a>
             </li>
             <% } %>
         </ul>
         <% } %>
-        <button type="button" class="create-payment">Create Payment</button>
+        <button type="button" class="btn btn-success create-payment text-uppercase">Add Payment</button>
     </div>
 </script>
 <script type="text/template" id="errorPageTemplate">

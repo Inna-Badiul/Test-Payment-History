@@ -1,63 +1,40 @@
-@import 'normalize';
 @import 'payment-history';
+@import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 body {
-  font-size: 14px;
-  font-family: 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif;
+  font-size: 20px;
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+h1{
+  margin-bottom:35px;
 }
 
-button {
-  margin-top: 10px;
-  padding: 7px;
-  color: white;
-  border-style: none;
+.page-wrapper {
+  padding: 10px;
 }
 
-.submit-button {
-  background-color: #76d28c;
-}
-
-.create-payment {
-  background-color: #76d28c;
-  width: 80%;
-  display: block;
-  margin: 0 auto;
-  text-transform: uppercase
-}
-
-h1 {
-  text-align: center;
+.form-control {
+  padding: 20px;
 }
 
 form {
   text-align: center;
   input {
-    width: 80%;
-    box-sizing: border-box;
-    padding: 5px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
   }
-  #importiert {
-    width: initial;
-  }
-}
-
-.imported {
-  font-size: 12px;
-  width: 60px;
-  border-radius: 3px;
-  background-color: #aeaeae;
-  color: white;
-  text-transform: uppercase;
 }
 
 .invalid {
-  border-color: red;
+  border-color: #d9534f;
 }
 
-.hint-description,.hint-summ {
+.hint-description, .hint-summ {
   display: none;
-  color: red;
-  margin-bottom:15px;
+  color: #d9534f;
+  margin-bottom: 15px;
+}
+
+.submit-button{
+  width:100%;
 }
 

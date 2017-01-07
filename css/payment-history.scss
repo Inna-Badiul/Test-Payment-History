@@ -1,27 +1,47 @@
 .payment-history {
-
   ul {
     list-style: none;
     padding: 0;
     li {
       border-bottom: 1px solid lightgrey;
-
-      padding: 10px;
+      padding-bottom: 10px;
+    }
+    .description{
+      color: #666666;
+      font-weight: bold;
+      display: inline-block;
     }
     .time {
-      color: #aeaeae;
+      color: #999999;
+      font-size:14px;
     }
     .value {
       float: right;
-      margin-right: 5px;
       font-weight: bold;
-      color: green;
-    }
-    .delete-payment {
-      background-color: #f44336;
+      color: #5cb85c;
     }
     .red{
-      color: #f44336;
+      color: #d9534f;
     }
+
+    .delete-payment{
+      margin-top: 10px;
+    }
+    .edit-payment{
+      float: right;
+      margin-top: 10px;
+    }
+    .imported {
+      background-color: #999999;
+      color: white;
+      border:none;
+      font-size: 11px;
+      font-weight: bold;
+    }
+  }
+  .create-payment {
+    width: 100%;
+    display: block;
+    margin:0 auto;
   }
 }
