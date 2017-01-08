@@ -72,7 +72,7 @@ App.createEditPaymentController = Object.assign({
             $("#helpBlock2").show();
             this.isSummValid = false;
         } else {
-            $('input[name="summ"]').parent().parent().addClass("has-error");
+            $('input[name="summ"]').parent().parent().removeClass("has-error");
             $("#helpBlock2").hide();
             this.isSummValid = true;
         }
