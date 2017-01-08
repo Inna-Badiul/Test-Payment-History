@@ -1,4 +1,8 @@
 .payment-history {
+  h4{
+    font-size:16px;
+  }
+
   ul {
     list-style: none;
     padding: 0;
@@ -43,5 +47,9 @@
     width: 100%;
     display: block;
     margin:0 auto;
+  }
+
+  .no-payments-title{
+    margin-bottom: 30px;
   }
 }

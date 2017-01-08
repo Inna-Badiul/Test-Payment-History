@@ -4,15 +4,18 @@ $(function () {
     var routes = {
         '/': function () {
             App.paymentHistoryController.init();
+            App.headerController.setTitle("Nico Bargatzki in EG bearbeiten");
         },
         '/add': function () {
             App.createEditPaymentController.init();
+            App.headerController.setTitle("Add Payment");
         },
         '/error': function () {
             App.errorPageController.init();
         },
         '/edit/:itemId': function (itemId) {
             App.createEditPaymentController.init(itemId);
+            App.headerController.setTitle("Edit Payment");
         }
     };
 
