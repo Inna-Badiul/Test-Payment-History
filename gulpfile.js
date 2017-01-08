@@ -13,7 +13,17 @@ var gulp = require('gulp'),
 
 gulp.task('sass', function () {
     return gulp.src('css/styles.scss')
-        .pipe(sass().on('error', sass.logError))
+
+        .pipe(sass({includePaths:["node_modules/bootstrap/dist/css"]}).on('error', sass.logError))
+        .pipe(gulp.dest('dist'));
+});
+
+gulp.task('sass:prod', function () {
+    return gulp.src('css/styles.scss')
+
+        .pipe(sass({
+            includePaths:["node_modules/bootstrap/dist/css"],
+            outputStyle: 'compressed'}).on('error', sass.logError))
         .pipe(gulp.dest('dist'));
 });
 
@@ -33,9 +43,10 @@ gulp.task('scripts:prod', function () {
 });
 
 gulp.task('watch', function () {
-    gulp.watch('css/*.scss', ['sass'])
-    gulp.watch('js/*.js', ['scripts:dev'])
+    gulp.watch('css/*.scss', ['sass']);
+    gulp.watch('js/*.js', ['scripts:dev']);
 });
 
 
 gulp.task('default', ['sass', 'scripts:dev' ,'watch']);
+gulp.task('prod', ['sass:prod', 'scripts:prod']);
