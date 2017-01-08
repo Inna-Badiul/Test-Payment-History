@@ -51,12 +51,12 @@ App.createEditPaymentController = Object.assign({
     validateDescription: function () {
         var description = $('input[name="description"]').val();
         if (this.descriptionValidationExp.test(description) === false) {
-            $('input[name="description"]').addClass("invalid");
-            $(".hint-description").show();
+            $('input[name="description"]').parent().addClass("has-error");
+            $("#helpBlock1").show();
             this.isDescriptionValid = false;
         } else {
-            $('input[name="description"]').removeClass("invalid");
-            $(".hint-description").hide();
+            $('input[name="description"]').parent().removeClass("has-error");
+            $("#helpBlock1").hide();
             this.isDescriptionValid = true;
         }
 
@@ -68,12 +68,12 @@ App.createEditPaymentController = Object.assign({
     validateSumm: function () {
         var summ = $('input[name="summ"]').val();
         if (this.summValidationExp.test(summ) === false) {
-            $('input[name="summ"]').addClass("invalid");
-            $(".hint-summ").show();
+            $('input[name="summ"]').parent().parent().addClass("has-error");
+            $("#helpBlock2").show();
             this.isSummValid = false;
         } else {
-            $('input[name="summ"]').removeClass("invalid");
-            $(".hint-summ").hide();
+            $('input[name="summ"]').parent().parent().addClass("has-error");
+            $("#helpBlock2").hide();
             this.isSummValid = true;
         }
     }

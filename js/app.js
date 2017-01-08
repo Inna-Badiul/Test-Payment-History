@@ -4,7 +4,7 @@ $(function () {
     var routes = {
         '/': function () {
             App.paymentHistoryController.init();
-            App.headerController.setTitle("Nico Bargatzki in EG bearbeiten");
+            App.headerController.setTitle("Nico Bargatzki");
         },
         '/add': function () {
             App.createEditPaymentController.init();
@@ -12,6 +12,7 @@ $(function () {
         },
         '/error': function () {
             App.errorPageController.init();
+            App.headerController.setTitle("Attention!");
         },
         '/edit/:itemId': function (itemId) {
             App.createEditPaymentController.init(itemId);
